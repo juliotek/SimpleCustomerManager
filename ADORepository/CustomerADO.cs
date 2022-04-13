@@ -35,7 +35,7 @@ namespace ADORepository
 
         protected override List<ICustomer> ExecuteCommand()
         {
-            objCommand.CommandText = "SELECT * FROM tbCustomer";
+            objCommand.CommandText = "SELECT * FROM tbCustomers";
 
             SqlDataReader dr = objCommand.ExecuteReader();
             List<ICustomer> custs = new List<ICustomer>();

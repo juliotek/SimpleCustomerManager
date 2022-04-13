@@ -21,12 +21,14 @@ namespace SimpleCustomerAppManager.Controllers
         }
 
         [HttpGet]
+        [Route("/GetType")]
         public ICustomer? GetType(string type)
         {
             return _custumerFactory.Create(type);                    
         }
 
         [HttpPost]
+        [Route("/Save")]
         public IActionResult Save(CustomerDTO model)
         {
             ICustomer cust = _custumerFactory.Create(model.Type);
@@ -46,12 +48,13 @@ namespace SimpleCustomerAppManager.Controllers
 
         }
 
-        //[HttpGet]
-        //public List<ICustomer> GetAll()
-        //{
-        //    var repo = _repositoryFactory.Create("ADO.NET");
-        //    return repo.GetAll();
-        //}
+        [HttpGet]
+        [Route("/GetAll")]
+        public List<ICustomer> GetAll()
+        {
+            var repo = _repositoryFactory.Create("ADO.NET");
+            return repo.GetAll();
+        }
 
     }
 }
