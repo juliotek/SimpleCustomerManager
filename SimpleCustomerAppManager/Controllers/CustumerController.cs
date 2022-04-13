@@ -1,7 +1,9 @@
 ﻿using FactoryCustomer;
 using InterfacesCustomer;
+using InterfacesData;
 using Microsoft.AspNetCore.Mvc;
 using SimpleCustomerAppManager.DTO;
+using FactoryRepository;
 using System.Text.Json;
 
 namespace SimpleCustomerAppManager.Controllers
@@ -11,18 +13,20 @@ namespace SimpleCustomerAppManager.Controllers
     public class CustumerController : ControllerBase
     {
         private readonly FactoryCustumerService<ICustomer> _custumerFactory;
-        public CustumerController(FactoryCustumerService<ICustomer> custumerFactory)
+        private readonly FactoryRepositoryService<IDataRepository<ICustomer>> _repositoryFactory;
+        public CustumerController(FactoryCustumerService<ICustomer> custumerFactory, FactoryRepositoryService<IDataRepository<ICustomer>> repositoryFactory)
         {
             _custumerFactory = custumerFactory;
+            _repositoryFactory = repositoryFactory;
         }
 
-        [HttpGet(Name = "GetType")]
+        [HttpGet]
         public ICustomer? GetType(string type)
         {
             return _custumerFactory.Create(type);                    
         }
 
-        [HttpPost(Name = "Save")]
+        [HttpPost]
         public IActionResult Save(CustomerDTO model)
         {
             ICustomer cust = _custumerFactory.Create(model.Type);
@@ -33,8 +37,21 @@ namespace SimpleCustomerAppManager.Controllers
             cust.BillAmount = model.BillAmount;
             cust.BillDate = model.BillDate;
 
-            return Ok(cust.Validate());
+            var repo = _repositoryFactory.Create("ADO.NET");
+
+            repo.Add(cust);
+            repo.Save();
+
+            return Ok();
 
         }
+
+        //[HttpGet]
+        //public List<ICustomer> GetAll()
+        //{
+        //    var repo = _repositoryFactory.Create("ADO.NET");
+        //    return repo.GetAll();
+        //}
+
     }
 }

@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ADORepository\ADORepository.csproj" />
+    <ProjectReference Include="..\ICustumer\InterfacesCustomer.csproj" />
     <ProjectReference Include="..\InterfacesData\InterfacesData.csproj" />
   </ItemGroup>
 

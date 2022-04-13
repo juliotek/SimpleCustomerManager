@@ -1,23 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ADORepository\ADORepository.csproj" />
     <ProjectReference Include="..\CommonDataRapository\CommonDataRapository.csproj" />
     <ProjectReference Include="..\FactoryCustumer\FactoryCustomer.csproj" />
-    <ProjectReference Include="..\FactoryRepository\FactoryRepository.csproj" />
     <ProjectReference Include="..\ICustumer\InterfacesCustomer.csproj" />
     <ProjectReference Include="..\InterfacesData\InterfacesData.csproj" />
-    <ProjectReference Include="..\Validation\Validation.csproj" />
   </ItemGroup>
 
 </Project>

@@ -17,10 +17,10 @@ namespace FactoryCustomer
         {
             if(type == "Customer")
             {
-                return _serviceProvider.GetService(typeof(Customer)) as ICustomer;
+                return (ICustomer)_serviceProvider.GetService(typeof(Customer));
             }
 
-            return _serviceProvider.GetService(typeof(Lead)) as ICustomer;
+            return (ICustomer)_serviceProvider.GetService(typeof(Lead));
         }
     }
 }
