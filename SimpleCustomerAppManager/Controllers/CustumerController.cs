@@ -1,10 +1,9 @@
-﻿using FactoryCustomer;
-using InterfacesCustomer;
-using InterfacesData;
+﻿using SCAMFactoryCustomer;
+using SCAMInterfacesCustomer;
+using SCAMInterfacesData;
 using Microsoft.AspNetCore.Mvc;
 using SimpleCustomerAppManager.DTO;
-using FactoryRepository;
-using System.Text.Json;
+using SCAMFactoryRepository;
 
 namespace SimpleCustomerAppManager.Controllers
 {

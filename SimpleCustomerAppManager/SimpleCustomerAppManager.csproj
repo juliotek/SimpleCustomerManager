@@ -7,17 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ADORepository\ADORepository.csproj" />
-    <ProjectReference Include="..\CommonDataRapository\CommonDataRapository.csproj" />
-    <ProjectReference Include="..\FactoryCustumer\FactoryCustomer.csproj" />
-    <ProjectReference Include="..\FactoryRepository\FactoryRepository.csproj" />
-    <ProjectReference Include="..\ICustumer\InterfacesCustomer.csproj" />
-    <ProjectReference Include="..\InterfacesData\InterfacesData.csproj" />
-    <ProjectReference Include="..\Validation\Validation.csproj" />
+    <ProjectReference Include="..\SCAMDataAccessAdo\SCAMDataAccessAdo.csproj" />
+    <ProjectReference Include="..\SCAMDataAccessCommon\SCAMDataAccessCommon.csproj" />
+    <ProjectReference Include="..\SCAMFactoryCustomer\SCAMFactoryCustomer.csproj" />
+    <ProjectReference Include="..\SCAMFactoryRepository\SCAMFactoryRepository.csproj" />
+    <ProjectReference Include="..\SCAMInterfacesCustomer\SCAMInterfacesCustomer.csproj" />
+    <ProjectReference Include="..\SCAMInterfacesData\SCAMInterfacesData.csproj" />
+    <ProjectReference Include="..\SCAMServices\SCAMServices.csproj" />
+    <ProjectReference Include="..\SCAMValidations\SCAMValidations.csproj" />
   </ItemGroup>
 
 </Project>

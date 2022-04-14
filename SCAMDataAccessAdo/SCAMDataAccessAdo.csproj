@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SCAMDataAccessCommon\SCAMDataAccessCommon.csproj" />
+    <ProjectReference Include="..\SCAMFactoryCustomer\SCAMFactoryCustomer.csproj" />
+    <ProjectReference Include="..\SCAMInterfacesCustomer\SCAMInterfacesCustomer.csproj" />
+    <ProjectReference Include="..\SCAMInterfacesData\SCAMInterfacesData.csproj" />
+  </ItemGroup>
+
+</Project>

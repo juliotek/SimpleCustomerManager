@@ -1,15 +1,14 @@
-using FactoryCustomer;
-using BusinessLogic;
-using InterfacesCustomer;
-using Validation;
-using InterfacesData;
-using CommonDataRapository;
-using FactoryRepository;
-using ADORepository;
-using Microsoft.Extensions.DependencyInjection;
+using SCAMFactoryCustomer;
+using SCAMServices;
+using SCAMInterfacesCustomer;
+using SCAMValidations;
+using SCAMInterfacesData;
+using SCAMFactoryRepository;
+using SCAMDataAccessAdo;
 
 var builder = WebApplication.CreateBuilder(args);
 
+ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -17,8 +16,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<FactoryCustumerService<ICustomer>>();
-builder.Services.AddScoped<FactoryRepositoryService<IDataRepository<ICustomer>>>();
+builder.Services.AddScoped(typeof(FactoryCustumerService<>));
+builder.Services.AddScoped(typeof(FactoryRepositoryService<>));
 
 builder.Services
     .AddScoped<Customer>(s => new Customer(new CustomerValidations()))
@@ -29,7 +28,7 @@ builder.Services
     .AddScoped<ICustomer, Lead>(s => s.GetService<Lead>());
 
 builder.Services
-    .AddScoped<CustomerADO>(s => new CustomerADO("Persist Security Info=False;User ID=sa;Password=julio42684;Initial Catalog=QST_DB;Server=DESKTOP-KAUIL3C\\SQLEXPRESS", s.GetService<FactoryCustumerService<ICustomer>>()))
+    .AddScoped<CustomerADO>(s => new CustomerADO(configuration.GetConnectionString("ADO.NET"), s.GetService<FactoryCustumerService<ICustomer>>()))
     .AddScoped<IDataRepository<ICustomer>, CustomerADO>(s => s.GetService<CustomerADO>());
 
 var app = builder.Build();
